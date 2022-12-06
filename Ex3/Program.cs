@@ -52,6 +52,9 @@ int GetNumber(string text)
 
 int minValue = GetNumber("Введите минимальное значение массива: ");
 int maxValue = GetNumber("Введите максимальное значение массива: ");
+
+if (maxValue >= minValue) 
+{
 int length = GetNumber("Введите длину массива: ");
 Console.WriteLine("");
 
@@ -60,3 +63,5 @@ int diffMaxMin = GetDiffMaxMin(array);
 PrintArray(array);
 Console.WriteLine("");
 Console.WriteLine($"Разница между макс и мин значениями массива: {diffMaxMin}.");
+}
+else Console.WriteLine("Ошибка! Максимальное значение меньше минимального!");

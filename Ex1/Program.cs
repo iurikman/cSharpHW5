@@ -43,20 +43,35 @@ int GetNumber(string text)
     bool isCorrect = false;
     while (isCorrect == false) 
     {
-        if (int.TryParse(Console.ReadLine(), out result)) isCorrect = true;
-        else Console.WriteLine("Ввели не число");
+        if (int.TryParse(Console.ReadLine(), out result) && result < 1000 && result > 99) isCorrect = true;
+        else Console.WriteLine("Ввели не трехзначное число");
     }
     return result;
 }
 
-int minValue = GetNumber("Введите минимальное значение массива:");
-int maxValue = GetNumber("Введмте максимальное значение массива:");
-int length = GetNumber("Введите длину массива:");
+int GetNumberLength(string text)
+{
+    Console.WriteLine(text);
+    int result = 0;
+    bool isCorrect = false;
+    while (isCorrect == false) 
+    {
+        if (int.TryParse(Console.ReadLine(), out result) && result > 1) isCorrect = true;
+        else Console.WriteLine("Введите число больше 1");
+    }
+    return result;
+}
 
-int[] array = GetArray(minValue, maxValue, length);
-PrintArray(array);
+int minValue = GetNumber("Введите минимальное трехзначное значение массива:");
+int maxValue = GetNumber("Введмте максимальное трехзначное значение массива:");
 
-int countOfPositiveNumbers = GetCountOfEvenNumbers(array);
-Console.WriteLine("");
-Console.WriteLine($"Количество четных значений элементов в массиве: {countOfPositiveNumbers}.");
-
+if (maxValue >= minValue) 
+{
+    int length = GetNumberLength("Введите длину массива:");
+    int[] array = GetArray(minValue, maxValue, length);
+    PrintArray(array);
+    int countOfPositiveNumbers = GetCountOfEvenNumbers(array);
+    Console.WriteLine("");
+    Console.WriteLine($"Количество четных значений элементов в массиве: {countOfPositiveNumbers}.");
+}
+else Console.WriteLine("Ошибка! Максимальное значение меньше минимального!");
