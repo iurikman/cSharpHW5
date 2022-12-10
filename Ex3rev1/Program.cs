@@ -10,7 +10,7 @@ double[] GetArray(double minValue, double maxValue, int length)
     Random rnd = new Random();
     for (int i = 0; i < length; i++)
     {
-        array[i] = rnd.NextDouble();
+        array[i] = minValue + rnd.NextDouble()*(minValue + maxValue);
     }
     return array;
 }
